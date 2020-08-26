@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跨域测试</title>
+</head>
+
+<body>
+
+  <script>
+    // JSONP跨域是因为浏览器对script标签不受同源策略限制
+    // 需要前后端配合完成（前后端约定好一个回调）
+    // 前端在请求的时候传递给后端之前约定好的一个回调
+    function method_Jsonp(resp) {
+      console.log(resp)
+    }
+  </script>
+  <script src="http://localhost:3000/users/jsonp?callback=method_Jsonp"></script>
+  <!-- 以上jsonp请求就行当于下面的代码（在network中查看） -->
+  <script>
+    // typeof method_Jsonp === 'function'
+    //  && method_Jsonp({code: 200, data: {currentPage: 3, isLastPage: false, total: 10000,…}});
+  </script>
+</body>
+
+</html>

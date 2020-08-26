@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cors跨域</title>
+</head>
+
+<body>
+  <script>
+    fetch("http://localhost:3000/users/json/header")
+      .then(resp => resp.json())
+      .then(resp => {
+        console.log(resp, "cors")
+      })
+  </script>
+  <script>
+    fetch("http://localhost:3000/users/json/cors")
+      .then(resp => resp.json())
+      .then(resp => {
+        console.log(resp, "cors+3")
+      })
+  </script>
+</body>
+
+</html>
